@@ -1,4 +1,5 @@
 // Main export file for grdbrz-ui
+import './styles/base.scss';
 
 // Primitives
 export * from './components/primitives/Button';
