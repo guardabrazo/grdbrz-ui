@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import {
-  SidebarLayout,
+  GrdbrzLayout,
   Panel,
   Stack,
   Heading,
@@ -151,7 +151,7 @@ function App() {
   );
 
   return (
-    <SidebarLayout
+    <GrdbrzLayout
       sidebar={leftSidebarContent}
       sidebarPosition="left"
       rightSidebar={rightSidebarContent}
@@ -357,7 +357,7 @@ function App() {
 
       {currentView === 'studio' && <div style={{ width: '100%', height: '100%' }}><StudioLayout layoutMode={layoutMode} /></div>}
       {currentView === 'dashboard' && <div style={{ width: '100%', height: '100%' }}><DashboardLayout layoutMode={layoutMode} /></div>}
-    </SidebarLayout>
+    </GrdbrzLayout>
   );
 }
 

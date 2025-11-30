@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    SidebarLayout,
+    GrdbrzLayout,
     Panel,
     Stack,
     Heading,
@@ -51,7 +51,7 @@ export const SynthLayout: React.FC = () => {
     );
 
     return (
-        <SidebarLayout sidebar={sidebar} sidebarPosition="left" sidebarWidth="320px">
+        <GrdbrzLayout sidebar={sidebar} sidebarPosition="left" sidebarWidth="320px">
             <Stack gap="none" style={{ height: '100%' }}>
                 <div style={{
                     padding: '24px',
@@ -111,6 +111,6 @@ export const SynthLayout: React.FC = () => {
                     </Stack>
                 </div>
             </Stack>
-        </SidebarLayout>
+        </GrdbrzLayout>
     );
 };

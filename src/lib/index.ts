@@ -15,9 +15,12 @@ export * from './components/primitives/Knob';
 
 // Layout
 export { Stack } from './components/layout/Stack';
-export { SidebarLayout } from './components/layout/SidebarLayout';
+export { GrdbrzLayout } from './components/layout/GrdbrzLayout';
 export { Center } from './components/layout/Center';
 export { Distribute } from './components/layout/Distribute';
+
+// Templates
+export { AppShell } from './components/templates/AppShell';
 
 // Theme
 export * from './components/theme/ThemeProvider';

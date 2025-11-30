@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './SidebarLayout.module.scss';
+import styles from './GrdbrzLayout.module.scss';
 
-export interface SidebarLayoutProps {
+export interface GrdbrzLayoutProps {
     children: React.ReactNode;
     sidebar: React.ReactNode;
     sidebarPosition?: 'left' | 'right'; // Deprecated but kept for backward compatibility if needed, though we are moving to explicit left/right props
@@ -14,7 +14,7 @@ export interface SidebarLayoutProps {
     className?: string;
 }
 
-export const SidebarLayout: React.FC<SidebarLayoutProps> = ({
+export const GrdbrzLayout: React.FC<GrdbrzLayoutProps> = ({
     children,
     sidebar,
     // sidebarPosition = 'left', // Unused
