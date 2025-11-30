@@ -1,0 +1,34 @@
+@use '../../styles/tokens' as *;
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    gap: var(--spacing-sm);
+}
+
+.input {
+    display: none;
+}
+
+.toggle {
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--border-subtle);
+    background: transparent;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s;
+
+    .input:checked+& {
+        background: var(--accent);
+        border-color: var(--accent);
+    }
+
+    .input:hover+& {
+        border-color: var(--accent);
+    }
+}
