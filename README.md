@@ -14,7 +14,7 @@ Import components and the CSS file in your application:
 
 ```tsx
 import { Button, ThemeProvider } from 'grdbrz-ui';
-import 'grdbrz-ui/dist/style.css';
+import 'grdbrz-ui/dist/grdbrz-ui.css';
 
 function App() {
   return (
