@@ -71,6 +71,18 @@ export const XYPad: React.FC<XYPadProps> = ({
                 onMouseDown={onMouseDown}
                 onTouchStart={onTouchStart}
             >
+                <div className={styles.grid} />
+
+                {/* Crosshairs */}
+                <div
+                    className={styles.crosshairX}
+                    style={{ left: `${x * 100}%` }}
+                />
+                <div
+                    className={styles.crosshairY}
+                    style={{ top: `${(1 - y) * 100}%` }} // Invert Y for display
+                />
+
                 <div
                     className={styles.handle}
                     style={{
@@ -78,7 +90,6 @@ export const XYPad: React.FC<XYPadProps> = ({
                         bottom: `${y * 100}%`
                     }}
                 />
-                <div className={styles.grid} />
             </div>
             <div className={styles.values}>
                 <Text variant="muted" size="xs">X: {x.toFixed(2)}</Text>

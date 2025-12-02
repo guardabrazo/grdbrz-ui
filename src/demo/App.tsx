@@ -25,6 +25,7 @@ function App() {
   const { theme, setTheme } = useTheme();
   const [currentView, setCurrentView] = useState<'showcase' | 'studio' | 'dashboard'>('showcase');
   const [sliderValue, setSliderValue] = useState(50);
+  const [discreteSliderValue, setDiscreteSliderValue] = useState(50);
   const [toggleValue, setToggleValue] = useState(false);
   const [checkboxValue, setCheckboxValue] = useState(false);
   const [toggleButtonValue, setToggleButtonValue] = useState(false);
@@ -245,22 +246,35 @@ function App() {
               >
                 <Panel header="Controls">
                   <Stack gap="md">
-                    <Slider
-                      label="FADER"
-                      value={sliderValue}
-                      onChange={setSliderValue}
-                      unit="%"
-                    />
-                    <Toggle
-                      label="TOGGLE SWITCH"
-                      checked={toggleValue}
-                      onChange={setToggleValue}
-                    />
-                    <Toggle variant="checkbox"
-                      label="CHECKBOX"
-                      checked={checkboxValue}
-                      onChange={setCheckboxValue}
-                    />
+                    <Stack direction="row" gap="xl" align="center" justify="between">
+                      <Slider
+                        label="FADER"
+                        value={sliderValue}
+                        onChange={setSliderValue}
+                        unit="%"
+                      />
+                      <Slider
+                        variant="discrete"
+                        label="DISCRETE FADER"
+                        min={0}
+                        max={100}
+                        step={25} // Will show ticks at 0, 25, 50, 75, 100
+                        value={discreteSliderValue}
+                        onChange={setDiscreteSliderValue}
+                      />
+                    </Stack>
+                    <Stack direction="row" gap="xl" align="center" justify="start">
+                      <Toggle
+                        label="TOGGLE SWITCH"
+                        checked={toggleValue}
+                        onChange={setToggleValue}
+                      />
+                      <Toggle variant="checkbox"
+                        label="CHECKBOX"
+                        checked={checkboxValue}
+                        onChange={setCheckboxValue}
+                      />
+                    </Stack>
                     <Select
                       label="DROPDOWN"
                       value={selectValue}
@@ -287,6 +301,14 @@ function App() {
                     </Stack>
                     <Stack direction="row" gap="xl" align="center" justify="between">
                       <Slider
+                        label="DISABLED FADER"
+                        value={50}
+                        onChange={() => { }}
+                        unit="%"
+                        disabled
+                      />
+                      <Slider
+                        variant="discrete"
                         label="DISABLED FADER"
                         value={50}
                         onChange={() => { }}
