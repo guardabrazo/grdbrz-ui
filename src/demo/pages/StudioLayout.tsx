@@ -124,7 +124,7 @@ export const StudioLayout: React.FC<StudioLayoutProps> = ({ layoutMode = 'stacke
 
                     <Panel header="FILTER">
                         <Stack gap="md">
-                            <Stack direction="row" gap="md" style={{ justifyContent: 'space-between' }}>
+                            <Stack direction="row" gap="md" justify="between">
                                 <Knob label="CUTOFF" value={cutoff} max={20000} onChange={setCutoff} />
                                 <Knob label="RES" value={res} max={10} onChange={setRes} />
                             </Stack>

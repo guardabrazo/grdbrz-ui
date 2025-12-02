@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import {
   GrdbrzLayout,
+  Box,
   Panel,
   Stack,
   Heading,
@@ -25,6 +26,7 @@ function App() {
   const [currentView, setCurrentView] = useState<'showcase' | 'studio' | 'dashboard'>('showcase');
   const [sliderValue, setSliderValue] = useState(50);
   const [toggleValue, setToggleValue] = useState(false);
+  const [checkboxValue, setCheckboxValue] = useState(false);
   const [toggleButtonValue, setToggleButtonValue] = useState(false);
   const [radioValue, setRadioValue] = useState('A');
   const [selectValue, setSelectValue] = useState('option1');
@@ -161,19 +163,21 @@ function App() {
     >
       {currentView === 'showcase' && (
         <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
-          <div style={{
-            padding: '24px',
-            borderBottom: '1px solid var(--border-subtle)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            background: 'var(--bg-panel)'
-          }}>
+          <Box
+            p="xl"
+            background="panel"
+            borderSide="bottom"
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
             <div>
               <Heading as="h1" size="lg">COMPONENT SHOWCASE</Heading>
               <Text variant="secondary" size="sm" style={{ marginTop: '4px' }}>A COLLECTION OF REUSABLE UI COMPONENTS</Text>
             </div>
-          </div>
+          </Box>
 
           <div style={{ padding: '24px', overflowY: 'auto', flex: 1 }}>
             <div style={{
@@ -209,12 +213,12 @@ function App() {
                     </div>
 
                     <div>
-                      <Text size="sm">Small text with wider spacing.</Text>
+                      <Text size="sm">Small text.</Text>
                       <Text variant="muted" size="sm">Muted Small Text</Text>
                     </div>
 
                     <div>
-                      <Text size="xs">Extra small text with widest spacing.</Text>
+                      <Text size="xs">Extra small text.</Text>
                       <Text variant="muted" size="xs">Muted Extra Small Text</Text>
                     </div>
                   </Stack>
@@ -252,6 +256,11 @@ function App() {
                       checked={toggleValue}
                       onChange={setToggleValue}
                     />
+                    <Toggle variant="checkbox"
+                      label="CHECKBOX"
+                      checked={checkboxValue}
+                      onChange={setCheckboxValue}
+                    />
                     <Select
                       label="DROPDOWN"
                       value={selectValue}
@@ -262,7 +271,7 @@ function App() {
                         { value: 'option3', label: 'Sawtooth' },
                       ]}
                     />
-                    <Stack direction="row" gap="xl" align="center">
+                    <Stack direction="row" gap="xl" align="center" justify="between">
                       <XYPad
                         label="2D SLIDER"
                         x={xyValue.x}
@@ -276,7 +285,7 @@ function App() {
                         onChange={setKnobValue}
                       />
                     </Stack>
-                    <Stack direction="row" gap="xl" align="center">
+                    <Stack direction="row" gap="xl" align="center" justify="between">
                       <Slider
                         label="DISABLED FADER"
                         value={50}

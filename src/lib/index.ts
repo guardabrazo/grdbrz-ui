@@ -19,6 +19,7 @@ export { Stack } from './components/layout/Stack';
 export { GrdbrzLayout } from './components/layout/GrdbrzLayout';
 export { Center } from './components/layout/Center';
 export { Distribute } from './components/layout/Distribute';
+export { Box } from './components/layout/Box';
 
 // Templates
 export { AppShell } from './components/templates/AppShell';

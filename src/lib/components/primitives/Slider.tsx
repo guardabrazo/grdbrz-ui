@@ -29,12 +29,7 @@ export const Slider: React.FC<SliderProps> = ({
 
     return (
         <div className={`${styles.container} ${props.disabled ? styles.disabled : ''} ${className || ''}`}>
-            {label && (
-                <label className={styles.label}>
-                    <span className={styles.labelText}>{label}</span>
-                    <span className={styles.value}>{value}{unit}</span>
-                </label>
-            )}
+            {label && <label className={styles.label}>{label}</label>}
             <input
                 type="range"
                 className={styles.slider}
@@ -45,6 +40,7 @@ export const Slider: React.FC<SliderProps> = ({
                 onChange={handleChange}
                 {...props}
             />
+            <span className={styles.value}>{value}{unit}</span>
         </div>
     );
 };

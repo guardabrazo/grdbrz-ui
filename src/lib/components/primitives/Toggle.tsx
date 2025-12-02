@@ -5,6 +5,7 @@ export interface ToggleProps {
     label?: string;
     checked: boolean;
     onChange: (checked: boolean) => void;
+    variant?: 'switch' | 'checkbox';
     className?: string;
 }
 
@@ -12,6 +13,7 @@ export const Toggle: React.FC<ToggleProps> = ({
     label,
     checked,
     onChange,
+    variant = 'switch',
     className
 }) => {
     return (
@@ -23,7 +25,7 @@ export const Toggle: React.FC<ToggleProps> = ({
                 checked={checked}
                 onChange={(e) => onChange(e.target.checked)}
             />
-            <span className={styles.toggle}></span>
+            <span className={`${styles.toggle} ${styles[variant]}`}></span>
         </label>
     );
 };

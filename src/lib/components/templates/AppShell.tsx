@@ -5,6 +5,8 @@ import { Heading } from '../primitives/Typography';
 import { Stack } from '../layout/Stack';
 import { Text } from '../primitives/Typography';
 
+import { Box } from '../layout/Box';
+
 export interface AppShellProps {
     /** The title of the application displayed in the header */
     title: string;
@@ -42,10 +44,12 @@ export const AppShell: React.FC<AppShellProps> = ({
         </Stack>
     );
 
+
+
     const defaultFooter = footer ? (
-        <div style={{ padding: '0 24px', height: '40px', display: 'flex', alignItems: 'center', width: '100%' }}>
+        <Box px="xl" style={{ height: '40px', display: 'flex', alignItems: 'center', width: '100%' }}>
             {footer}
-        </div>
+        </Box>
     ) : (
         <Stack direction="row" justify="between" align="center" style={{ width: '100%', padding: '0 24px', height: '40px' }}>
             <Text size="xs" variant="muted">© {new Date().getFullYear()} {title}</Text>

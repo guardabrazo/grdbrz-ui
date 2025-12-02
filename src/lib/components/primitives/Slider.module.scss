@@ -2,9 +2,13 @@
 
 .container {
     display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex: 1; // Grow to fill space
+    width: auto; // Allow flex to control width
+    min-width: 0; // Allow shrinking
+    min-height: 24px; // Ensure consistent height
 
     &.disabled {
         opacity: 0.4;
@@ -14,23 +18,26 @@
 }
 
 .label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     font-size: var(--font-size-xs);
     color: var(--text-secondary);
     letter-spacing: var(--letter-spacing-tight);
+    white-space: nowrap;
+    min-width: 60px; // Fixed width for alignment
 }
 
 .value {
     color: var(--text-primary);
     font-family: inherit;
+    font-size: var(--font-size-xs);
+    min-width: 32px; // Fixed width for values
+    text-align: right;
+    font-variant-numeric: tabular-nums;
 }
 
 .slider {
     -webkit-appearance: none;
     appearance: none;
-    width: 100%;
+    flex: 1; // Take remaining space
     height: 2px;
     background: var(--border-subtle);
     outline: none;
