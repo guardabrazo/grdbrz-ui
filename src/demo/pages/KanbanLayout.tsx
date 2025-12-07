@@ -3,8 +3,7 @@ import {
     Heading,
     Text,
     Pill,
-    Button,
-    Panel
+    Button
 } from '../../lib';
 import styles from './KanbanLayout.module.scss';
 
