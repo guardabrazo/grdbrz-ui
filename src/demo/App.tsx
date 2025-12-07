@@ -291,6 +291,9 @@ function App() {
                           variant="discrete"
                           label="DISABLED FADER"
                           value={50}
+                          min={0}
+                          max={100}
+                          step={25}
                           onChange={() => { }}
                           unit="%"
                           disabled

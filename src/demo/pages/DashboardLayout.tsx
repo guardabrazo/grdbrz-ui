@@ -35,44 +35,45 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ layoutMode = '
 
             {/* Main Content */}
             <div className={mainContentClass}>
-                <div className={styles.contentStack}>
-                    <div className={styles.titleRow}>
-                        <div className={styles.titleBlock}>
-                            <Heading as="h1" size="xl">SYSTEM STATUS</Heading>
-                            <Text variant="secondary">LAST UPDATED: 10:42 AM</Text>
+                {/* Row 1: Title */}
+                <div className={styles.titleRow}>
+                    <div className={styles.titleBlock}>
+                        <Heading as="h1" size="xl">SYSTEM STATUS</Heading>
+                        <Text variant="secondary">LAST UPDATED: 10:42 AM</Text>
+                    </div>
+                    <Button variant="primary">REFRESH DATA</Button>
+                </div>
+
+                {/* Row 2: Stats */}
+                <div className={styles.statsGrid}>
+                    <Panel header="SERVER LOAD">
+                        <div className={styles.statValue}>
+                            <Heading size="xl">42%</Heading>
                         </div>
-                        <Button variant="primary">REFRESH DATA</Button>
-                    </div>
-
-                    <div className={styles.statsGrid}>
-                        <Panel header="SERVER LOAD">
-                            <div className={styles.statValue}>
-                                <Heading size="xl">42%</Heading>
-                            </div>
-                        </Panel>
-                        <Panel header="ACTIVE USERS">
-                            <div className={styles.statValue}>
-                                <Heading size="xl">1,284</Heading>
-                            </div>
-                        </Panel>
-                        <Panel header="ERROR RATE">
-                            <div className={styles.statValue}>
-                                <Heading size="xl" className={styles.errorRate}>0.01%</Heading>
-                            </div>
-                        </Panel>
-                    </div>
-
-                    <Panel header="RECENT ACTIVITY">
-                        <div className={styles.activityList}>
-                            {[1, 2, 3, 4, 5].map((i) => (
-                                <div key={i} className={styles.activityRow}>
-                                    <Text>USER ACTION #{i}</Text>
-                                    <Text variant="muted">2 MIN AGO</Text>
-                                </div>
-                            ))}
+                    </Panel>
+                    <Panel header="ACTIVE USERS">
+                        <div className={styles.statValue}>
+                            <Heading size="xl">1,284</Heading>
+                        </div>
+                    </Panel>
+                    <Panel header="ERROR RATE">
+                        <div className={styles.statValue}>
+                            <Heading size="xl" className={styles.errorRate}>0.01%</Heading>
                         </div>
                     </Panel>
                 </div>
+
+                {/* Row 3: Activity */}
+                <Panel header="RECENT ACTIVITY">
+                    <div className={styles.activityList}>
+                        {[1, 2, 3, 4, 5].map((i) => (
+                            <div key={i} className={styles.activityRow}>
+                                <Text>USER ACTION #{i}</Text>
+                                <Text variant="muted">2 MIN AGO</Text>
+                            </div>
+                        ))}
+                    </div>
+                </Panel>
             </div>
         </div>
     );

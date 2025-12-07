@@ -26,7 +26,7 @@
 
     // Variants
     &.primary {
-        border-color: var(--text-primary);
+        border-color: var(--accent);
 
         &:hover:not(:disabled) {
             background: rgba(255, 255, 255, 0.1);
@@ -34,17 +34,17 @@
 
         // Momentary Active (Click)
         &:active:not(:disabled) {
-            background: var(--text-primary);
+            background: var(--accent);
             color: var(--bg-app);
         }
 
         // Toggle Active (State)
         &.active {
-            background: var(--text-primary);
+            background: var(--accent);
             color: var(--bg-app);
 
             &:hover:not(:disabled) {
-                background: var(--text-primary);
+                background: var(--accent);
                 color: var(--bg-app);
                 opacity: 0.8;
             }

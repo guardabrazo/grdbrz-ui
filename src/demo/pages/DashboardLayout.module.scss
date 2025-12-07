@@ -29,25 +29,17 @@
     flex: 1;
     padding: var(--spacing-xl);
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
 
     &.distributed {
-        display: flex;
-        flex-direction: column;
         justify-content: space-between;
     }
 
     &.centered {
-        display: flex;
-        flex-direction: column;
         justify-content: center;
     }
-}
-
-.contentStack {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xl);
-    height: 100%;
 }
 
 .titleRow {

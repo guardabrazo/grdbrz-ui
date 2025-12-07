@@ -42,13 +42,6 @@ const COLUMNS: { id: string; title: string; tasks: Task[] }[] = [
         ]
     },
     {
-        id: 'await',
-        title: 'Await',
-        tasks: [
-            { id: '10', title: 'Feedback from design', tag: 'Design', tagVariant: 'muted' },
-        ]
-    },
-    {
         id: 'done',
         title: 'Done',
         tasks: [
