@@ -16,14 +16,17 @@ import {
   XYPad,
   Knob,
   ToggleButton,
-  ButtonGroup
+  ButtonGroup,
+  Input
 } from '../lib';
 import { StudioLayout } from './pages/StudioLayout';
 import { DashboardLayout } from './pages/DashboardLayout';
 
+import { KanbanLayout } from './pages/KanbanLayout';
+
 function App() {
   const { theme, setTheme } = useTheme();
-  const [currentView, setCurrentView] = useState<'showcase' | 'studio' | 'dashboard'>('showcase');
+  const [currentView, setCurrentView] = useState<'showcase' | 'studio' | 'dashboard' | 'kanban'>('showcase');
   const [sliderValue, setSliderValue] = useState(50);
   const [discreteSliderValue, setDiscreteSliderValue] = useState(50);
   const [toggleValue, setToggleValue] = useState(false);
@@ -33,6 +36,9 @@ function App() {
   const [selectValue, setSelectValue] = useState('option1');
   const [xyValue, setXyValue] = useState({ x: 0.5, y: 0.5 });
   const [knobValue, setKnobValue] = useState(50);
+  const [inputValue, setInputValue] = useState('');
+  const [sensitiveInputValue, setSensitiveInputValue] = useState('');
+  const [passwordValue, setPasswordValue] = useState('');
   const [layoutMode, setLayoutMode] = useState<'stacked' | 'distributed' | 'centered'>('stacked');
 
 
@@ -110,6 +116,12 @@ function App() {
             active={currentView === 'dashboard'}
           >
             Dashboard Layout
+          </Button>
+          <Button
+            onClick={() => setCurrentView('kanban')}
+            active={currentView === 'kanban'}
+          >
+            Kanban Layout
           </Button>
         </ButtonGroup>
       </Panel>
@@ -231,6 +243,32 @@ function App() {
                       <Pill label="Primary" variant="primary" />
                       <Pill label="Muted" variant="muted" />
                     </Stack>
+                  </Stack>
+                </Panel>
+
+                <Panel header="Inputs">
+                  <Stack gap="md" direction="row">
+                    <Input
+                      placeholder="DEFAULT"
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                    />
+                    <Input
+                      variant="sensitive"
+                      placeholder="SENSITIVE"
+                      value={sensitiveInputValue}
+                      onChange={(e) => setSensitiveInputValue(e.target.value)}
+                    />
+                    <Input
+                      type="password"
+                      placeholder="PASSWORD"
+                      value={passwordValue}
+                      onChange={(e) => setPasswordValue(e.target.value)}
+                    />
+                    <Input
+                      placeholder="DISABLED"
+                      disabled
+                    />
                   </Stack>
                 </Panel>
               </Stack>
@@ -388,6 +426,7 @@ function App() {
 
       {currentView === 'studio' && <div style={{ width: '100%', height: '100%' }}><StudioLayout layoutMode={layoutMode} /></div>}
       {currentView === 'dashboard' && <div style={{ width: '100%', height: '100%' }}><DashboardLayout layoutMode={layoutMode} /></div>}
+      {currentView === 'kanban' && <div style={{ width: '100%', height: '100%' }}><KanbanLayout /></div>}
     </GrdbrzLayout>
   );
 }

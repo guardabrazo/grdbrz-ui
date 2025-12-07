@@ -74,4 +74,11 @@
     &.justify-around {
         justify-content: space-around;
     }
+
+    // Grow
+    &.grow>* {
+        flex-grow: 1;
+        flex-basis: 0; // Ensure equal distribution regardless of content width
+        min-width: 0; // Allow shrinking below content size if needed
+    }
 }

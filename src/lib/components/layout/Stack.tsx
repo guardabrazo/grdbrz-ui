@@ -7,6 +7,7 @@ export interface StackProps extends React.HTMLAttributes<HTMLDivElement> {
     gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'none';
     align?: 'start' | 'center' | 'end' | 'stretch';
     justify?: 'start' | 'center' | 'end' | 'between' | 'around';
+    grow?: boolean;
     className?: string;
 }
 
@@ -16,6 +17,7 @@ export const Stack: React.FC<StackProps> = ({
     gap = 'md',
     align = 'stretch',
     justify = 'start',
+    grow = false,
     className,
     ...props
 }) => {
@@ -25,6 +27,7 @@ export const Stack: React.FC<StackProps> = ({
         styles[`gap-${gap}`],
         styles[`align-${align}`],
         styles[`justify-${justify}`],
+        grow && styles.grow,
         className
     ].filter(Boolean).join(' ');
 

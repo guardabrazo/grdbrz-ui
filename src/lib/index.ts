@@ -13,12 +13,11 @@ export * from './components/primitives/Toggle';
 export * from './components/primitives/Select';
 export * from './components/primitives/XYPad';
 export * from './components/primitives/Knob';
+export * from './components/primitives/Input';
 
 // Layout
 export { Stack } from './components/layout/Stack';
 export { GrdbrzLayout } from './components/layout/GrdbrzLayout';
-export { Center } from './components/layout/Center';
-export { Distribute } from './components/layout/Distribute';
 export { Box } from './components/layout/Box';
 
 // Templates
