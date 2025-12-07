@@ -1,11 +1,10 @@
 import React from 'react';
 import {
-    Box,
-    Stack,
     Heading,
     Text,
     Pill,
-    Button
+    Button,
+    Panel
 } from '../../lib';
 import styles from './KanbanLayout.module.scss';
 
@@ -62,50 +61,27 @@ const COLUMNS: { id: string; title: string; tasks: Task[] }[] = [
 
 export const KanbanLayout: React.FC = () => {
     return (
-        <Box
-            background="app"
-            className={styles.board}
-        >
-            <Stack
-                direction="row"
-                gap="lg"
-                align="stretch"
-                grow
-                className={styles.columnsContainer}
-            >
+        <div className={styles.board}>
+            <div className={styles.columnsContainer}>
                 {COLUMNS.map((column) => (
-                    <Box
-                        key={column.id}
-                        background="panel"
-                        className={styles.column}
-                    >
+                    <div key={column.id} className={styles.column}>
                         {/* Column Header */}
-                        <Box
-                            p="md"
-                            borderSide="bottom"
-                            className={styles.columnHeader}
-                        >
+                        <div className={styles.columnHeader}>
                             <Heading as="h3" size="sm">{column.title}</Heading>
                             <Pill label={column.tasks.length.toString()} variant="muted" />
-                        </Box>
+                        </div>
 
                         {/* Column Content */}
-                        <Stack gap="md" className={styles.columnContent}>
+                        <div className={styles.columnContent}>
                             {column.tasks.map((task) => (
-                                <Box
-                                    key={task.id}
-                                    background="surface"
-                                    border="subtle"
-                                    p="md"
-                                    className={styles.taskCard}
-                                >
-                                    <Stack gap="sm">
-                                        <Stack direction="row" justify="between" align="start">
+                                <div key={task.id} className={styles.taskCard}>
+                                    <div className={styles.taskCardInner}>
+                                        <div className={styles.taskHeader}>
                                             <Pill label={task.tag} variant={task.tagVariant} />
                                             <Button variant="subtle" className={styles.moreButton}>
                                                 ...
                                             </Button>
-                                        </Stack>
+                                        </div>
 
                                         <Text size="sm" style={{ fontWeight: 500 }}>{task.title}</Text>
 
@@ -115,20 +91,20 @@ export const KanbanLayout: React.FC = () => {
                                             </Text>
                                         )}
 
-                                        <Stack direction="row" justify="between" align="center" style={{ marginTop: '4px' }}>
+                                        <div className={styles.taskFooter}>
                                             <Text size="xs" variant="muted">#{task.id}</Text>
-                                        </Stack>
-                                    </Stack>
-                                </Box>
+                                        </div>
+                                    </div>
+                                </div>
                             ))}
 
                             <Button variant="subtle" className={styles.addTaskButton}>
                                 + Add Task
                             </Button>
-                        </Stack>
-                    </Box>
+                        </div>
+                    </div>
                 ))}
-            </Stack>
-        </Box>
+            </div>
+        </div>
     );
 };

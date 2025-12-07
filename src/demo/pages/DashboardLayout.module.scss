@@ -1,0 +1,97 @@
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-app);
+}
+
+.header {
+    padding: var(--spacing-xl);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-panel);
+}
+
+.headerLeft {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.userSelect {
+    width: 200px;
+}
+
+.mainContent {
+    flex: 1;
+    padding: var(--spacing-xl);
+    overflow-y: auto;
+
+    &.distributed {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &.centered {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.contentStack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    height: 100%;
+}
+
+.titleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.titleBlock {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.statValue {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.errorRate {
+    color: #ff4444;
+}
+
+.activityList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.activityRow {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--border-subtle);
+
+    &:last-child {
+        border-bottom: none;
+    }
+}

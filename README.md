@@ -1,6 +1,6 @@
 # grdbrz-ui
 
-A comprehensive React UI component library designed for building professional web applications with a minimal and stylish interface.
+A minimal React UI component library with professional styling and built-in theming.
 
 ## Installation
 
@@ -10,54 +10,60 @@ npm install grdbrz-ui
 
 ## Usage
 
-Import components and the CSS file in your application:
-
 ```tsx
 import { Button, ThemeProvider } from 'grdbrz-ui';
 import 'grdbrz-ui/dist/grdbrz-ui.css';
 
 function App() {
   return (
-    <ThemeProvider theme="darkDefault">
+    <ThemeProvider defaultTheme="darkDefault">
       <Button>Click Me</Button>
     </ThemeProvider>
   );
 }
 ```
 
-## Features
+## Components
 
-- **Theming**: Built-in support for multiple themes (`darkDefault`, `darkMuted`, `highContrast`, `light`).
-- **Templates**: `AppShell` for a ready-to-use application structure.
-- **Primitives**: Buttons, Toggles, Sliders, Knobs, XYPads, and more.
-- **Layouts**: Stack, GrdbrzLayout, Center, Distribute.
-- **Design Tokens**: Comprehensive system for colors, typography, and spacing.
+### Primitives
 
-## Quick Start (AppShell)
+| Component | Description |
+|-----------|-------------|
+| `Button` | Primary action button with variants |
+| `ToggleButton` | Button with on/off state |
+| `ButtonGroup` | Group of related buttons |
+| `Pill` | Tag/badge component |
+| `Panel` | Container with optional header |
+| `Heading` | Typography headings (h1-h6) |
+| `Text` | Body text with variants |
+| `Slider` | Range input with label |
+| `Toggle` | On/off switch |
+| `Select` | Dropdown selector |
+| `Input` | Text input field |
+| `Knob` | Rotary control |
+| `XYPad` | 2D control surface |
 
-The easiest way to get started is using the `AppShell` component:
+### Theme
+
+Wrap your app with `ThemeProvider` to enable theming:
 
 ```tsx
-import { AppShell, Panel, Slider } from 'grdbrz-ui';
-import 'grdbrz-ui/dist/grdbrz-ui.css';
-
-function App() {
-  return (
-    <AppShell
-      title="MY APP"
-      sidebar={
-        <Panel header="Controls">
-          <Slider label="Volume" value={50} onChange={() => {}} />
-        </Panel>
-      }
-    >
-      <div style={{ padding: '24px' }}>
-        <h1>Main Content</h1>
-      </div>
-    </AppShell>
-  );
-}
+<ThemeProvider defaultTheme="darkDefault">
+  {/* your app */}
+</ThemeProvider>
 ```
+
+**Available themes:** `darkDefault`, `darkMuted`, `highContrast`, `light`
+
+## Design Tokens
+
+The library uses CSS variables for consistent styling:
+
+- `--bg-app`, `--bg-panel`, `--bg-surface` — backgrounds
+- `--text-primary`, `--text-secondary`, `--text-muted` — typography
+- `--border-subtle`, `--border-default` — borders
+- `--spacing-xs` through `--spacing-xl` — spacing
+- `--accent-primary`, `--accent-secondary` — accent colors
 
 ## License
 

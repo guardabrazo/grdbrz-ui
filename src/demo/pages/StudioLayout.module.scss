@@ -1,0 +1,89 @@
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: var(--spacing-xl);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-panel);
+}
+
+.headerActions {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.mainGrid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: var(--spacing-xl);
+    gap: var(--spacing-xl);
+    background: var(--bg-app);
+    overflow-y: auto;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    height: 100%;
+
+    &.distributed {
+        justify-content: space-between;
+    }
+
+    &.centered {
+        justify-content: center;
+    }
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.rowSpaced {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.stackSm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.waveformDisplay {
+    height: 200px;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-surface);
+}
+
+.waveformContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: center;
+}

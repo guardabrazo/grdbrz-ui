@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import {
-
     Panel,
-    Stack,
     Heading,
     Text,
     Slider,
@@ -12,6 +10,7 @@ import {
     Knob,
     XYPad
 } from '../../lib';
+import styles from './StudioLayout.module.scss';
 
 interface StudioLayoutProps {
     layoutMode?: 'stacked' | 'distributed' | 'centered';
@@ -46,42 +45,23 @@ export const StudioLayout: React.FC<StudioLayoutProps> = ({ layoutMode = 'stacke
     const [vectorX, setVectorX] = useState(0.5);
     const [vectorY, setVectorY] = useState(0.5);
 
-    const columnStyle: React.CSSProperties = {
-        height: '100%',
-        justifyContent: layoutMode === 'distributed' ? 'space-between' :
-            layoutMode === 'centered' ? 'center' : 'flex-start'
-    };
+    const columnClass = `${styles.column} ${layoutMode === 'distributed' ? styles.distributed : layoutMode === 'centered' ? styles.centered : ''}`;
 
     return (
-        <Stack gap="none" style={{ height: '100%' }}>
-            <div style={{
-                padding: '24px',
-                borderBottom: '1px solid var(--border-subtle)',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                background: 'var(--bg-panel)'
-            }}>
+        <div className={styles.container}>
+            <div className={styles.header}>
                 <Heading as="h1" size="lg">STUDIO CONSOLE</Heading>
-                <Stack direction="row" gap="md">
+                <div className={styles.headerActions}>
                     <Button>LOAD PROJECT</Button>
                     <Button variant="primary">SAVE</Button>
-                </Stack>
+                </div>
             </div>
 
-            <div style={{
-                flex: 1,
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr 1fr',
-                padding: '24px',
-                gap: '24px',
-                background: 'var(--bg-app)',
-                overflowY: 'auto'
-            }}>
+            <div className={styles.mainGrid}>
                 {/* Column 1 */}
-                <Stack gap="lg" style={columnStyle}>
+                <div className={columnClass}>
                     <Panel header="CHANNEL STRIP">
-                        <Stack gap="md">
+                        <div className={styles.stack}>
                             <Select
                                 label="INPUT"
                                 value={input}
@@ -94,11 +74,11 @@ export const StudioLayout: React.FC<StudioLayoutProps> = ({ layoutMode = 'stacke
                             />
                             <Slider label="GAIN" value={gain} min={-60} max={12} onChange={setGain} unit="dB" />
                             <Toggle label="PHASE INVERT" checked={phase} onChange={setPhase} />
-                        </Stack>
+                        </div>
                     </Panel>
 
                     <Panel header="OSCILLATOR">
-                        <Stack gap="md">
+                        <div className={styles.stack}>
                             <Select
                                 label="WAVEFORM"
                                 value={waveform}
@@ -109,92 +89,85 @@ export const StudioLayout: React.FC<StudioLayoutProps> = ({ layoutMode = 'stacke
                                 ]}
                                 onChange={setWaveform}
                             />
-                            <Stack direction="row" gap="md">
+                            <div className={styles.row}>
                                 <Knob label="DETUNE" value={detune} onChange={setDetune} size="sm" />
                                 <Knob label="PW" value={pw} onChange={setPw} size="sm" />
-                            </Stack>
+                            </div>
                             <XYPad
                                 label="VECTOR"
                                 x={vectorX}
                                 y={vectorY}
                                 onChange={(x, y) => { setVectorX(x); setVectorY(y); }}
                             />
-                        </Stack>
+                        </div>
                     </Panel>
 
                     <Panel header="FILTER">
-                        <Stack gap="md">
-                            <Stack direction="row" gap="md" justify="between">
+                        <div className={styles.stack}>
+                            <div className={styles.rowSpaced}>
                                 <Knob label="CUTOFF" value={cutoff} max={20000} onChange={setCutoff} />
                                 <Knob label="RES" value={res} max={10} onChange={setRes} />
-                            </Stack>
+                            </div>
                             <Toggle label="DRIVE" checked={drive} onChange={setDrive} />
-                        </Stack>
+                        </div>
                     </Panel>
-                </Stack>
+                </div>
 
                 {/* Column 2 */}
-                <Stack gap="lg" style={columnStyle}>
+                <div className={columnClass}>
                     <Panel header="ENVELOPE">
-                        <Stack gap="md">
+                        <div className={styles.stack}>
                             <Slider label="ATTACK" value={attack} onChange={setAttack} unit="ms" />
                             <Slider label="DECAY" value={decay} onChange={setDecay} unit="ms" />
                             <Slider label="SUSTAIN" value={sustain} onChange={setSustain} unit="%" />
                             <Slider label="RELEASE" value={release} onChange={setRelease} unit="ms" />
-                        </Stack>
+                        </div>
                     </Panel>
 
                     <Panel header="EQ SECTION">
-                        <Stack gap="md">
-                            <Stack direction="row" gap="md" style={{ justifyContent: 'space-between' }}>
+                        <div className={styles.stack}>
+                            <div className={styles.rowSpaced}>
                                 <Knob label="HIGH" value={eqHigh} min={-12} max={12} onChange={setEqHigh} size="sm" />
                                 <Knob label="MID" value={eqMid} min={-12} max={12} onChange={setEqMid} size="sm" />
                                 <Knob label="LOW" value={eqLow} min={-12} max={12} onChange={setEqLow} size="sm" />
-                            </Stack>
+                            </div>
                             <Toggle label="BYPASS" checked={bypass} onChange={setBypass} />
-                        </Stack>
+                        </div>
                     </Panel>
 
                     <Panel header="DYNAMICS">
-                        <Stack gap="md">
+                        <div className={styles.stack}>
                             <Slider label="THRESH" value={thresh} onChange={setThresh} unit="dB" />
                             <Slider label="RATIO" value={ratio} max={20} onChange={setRatio} unit=":1" />
                             <Slider label="MAKEUP" value={makeup} onChange={setMakeup} unit="dB" />
-                        </Stack>
+                        </div>
                     </Panel>
-                </Stack>
+                </div>
 
                 {/* Column 3 */}
-                <Stack gap="lg" style={columnStyle}>
+                <div className={columnClass}>
                     <Panel header="MAIN MIX">
-                        <div style={{
-                            height: '200px',
-                            border: '1px solid var(--border-subtle)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            background: 'var(--bg-surface)'
-                        }}>
-                            <Stack gap="md" align="center" direction="column">
+                        <div className={styles.waveformDisplay}>
+                            <div className={styles.waveformContent}>
                                 <Text variant="muted">WAVEFORM DISPLAY</Text>
-                            </Stack>
+                            </div>
                         </div>
                     </Panel>
 
                     <Panel header="SENDS">
-                        <Stack gap="sm">
+                        <div className={styles.stackSm}>
                             <Slider label="REVERB" value={reverbSend} onChange={setReverbSend} unit="dB" />
                             <Slider label="DELAY" value={delaySend} onChange={setDelaySend} unit="dB" />
-                        </Stack>
+                        </div>
                     </Panel>
                     <Panel header="GROUPS">
-                        <Stack gap="sm">
+                        <div className={styles.stackSm}>
                             <Toggle label="DRUMS" checked={drums} onChange={setDrums} />
                             <Toggle label="VOCALS" checked={vocals} onChange={setVocals} />
-                        </Stack>
+                        </div>
                     </Panel>
-                </Stack>
+                </div>
             </div>
-        </Stack>
+        </div>
     );
 };
